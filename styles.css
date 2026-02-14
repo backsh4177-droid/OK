@@ -1,0 +1,99 @@
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #182033;
+  --muted: #5f6b85;
+  --line: #dfe3ef;
+  --accent: #4c6fff;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+.container {
+  max-width: 980px;
+  margin: 32px auto;
+  padding: 0 16px 32px;
+}
+h1 { margin-bottom: 8px; }
+p { line-height: 1.5; color: var(--muted); }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+label { display: block; font-weight: 600; margin-top: 10px; }
+textarea, input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 6px;
+  font: inherit;
+}
+.grid2, .grid3 {
+  display: grid;
+  gap: 12px;
+}
+.grid2 { grid-template-columns: 1fr 1fr; }
+.grid3 { grid-template-columns: repeat(3, 1fr); }
+.actions { display: flex; gap: 10px; margin-top: 14px; }
+button {
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+button.ghost {
+  background: #ecf0ff;
+  color: #2a45bf;
+}
+.status { margin: 10px 0 2px; font-size: 14px; }
+.result {
+  margin-top: 10px;
+  border-top: 1px dashed var(--line);
+  padding-top: 10px;
+}
+.score-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+#score { font-size: 38px; color: #182033; }
+.meter {
+  width: 100%;
+  height: 10px;
+  background: #edf0fb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+#meterFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #99a8ff, #4c6fff);
+}
+.hint { font-size: 14px; color: var(--muted); }
+table {
+  width: 100%;
+  margin-top: 12px;
+  border-collapse: collapse;
+}
+th, td {
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  padding: 8px;
+}
+
+@media (max-width: 860px) {
+  .grid2, .grid3 { grid-template-columns: 1fr; }
+}
