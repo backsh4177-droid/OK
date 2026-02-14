@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>한국어 임베딩 유사도 실험실</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>한국어 임베딩 유사도 실험실</h1>
+        <p>
+          문장/단어를 넣으면 브라우저에서 임베딩을 계산하고 코사인 유사도를 숫자로 보여줍니다.
+          (모델: <code>Xenova/paraphrase-multilingual-MiniLM-L12-v2</code>)
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>1) 두 입력 유사도</h2>
+        <div class="grid2">
+          <label>
+            입력 A
+            <textarea id="textA" rows="4" placeholder="예: 오늘 날씨가 정말 좋다."></textarea>
+          </label>
+          <label>
+            입력 B
+            <textarea id="textB" rows="4" placeholder="예: 오늘 하늘이 맑고 기분이 좋다."></textarea>
+          </label>
+        </div>
+        <div class="actions">
+          <button id="runBtn">유사도 계산</button>
+          <button id="swapBtn" class="ghost">A/B 바꾸기</button>
+        </div>
+        <p id="status" class="status">모델 로딩 전입니다.</p>
+
+        <div class="result" id="resultCard" hidden>
+          <div class="score-wrap">
+            <span>코사인 유사도</span>
+            <strong id="score">-</strong>
+          </div>
+          <div class="meter" aria-hidden="true">
+            <div id="meterFill"></div>
+          </div>
+          <p id="interpretation" class="hint"></p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2) 문맥 분기 실험 (중립/긍정/부정)</h2>
+        <p class="hint">
+          같은 핵심어를 세 문맥에 넣어 의미가 얼마나 갈라지는지 확인하세요.
+        </p>
+        <label>
+          핵심 단어
+          <input id="keyword" value="차갑다" />
+        </label>
+        <div class="actions">
+          <button id="fillBtn" class="ghost">예시 문장 자동 채우기</button>
+          <button id="triBtn">3문장 비교 실행</button>
+        </div>
+        <div class="grid3">
+          <label>중립
+            <textarea id="neutral" rows="3"></textarea>
+          </label>
+          <label>긍정
+            <textarea id="positive" rows="3"></textarea>
+          </label>
+          <label>부정
+            <textarea id="negative" rows="3"></textarea>
+          </label>
+        </div>
+        <table id="triTable" hidden>
+          <thead><tr><th>비교</th><th>유사도</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
